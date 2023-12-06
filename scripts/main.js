@@ -6,6 +6,35 @@ $(document).ready(function() {
     // uncomment below for on-scroll animations to played only once
     // once: true  
   }); // initialize animate on scroll library
+
+  document.getElementById('downloadCvButton').addEventListener('click', function() {
+    const { jsPDF } = window.jspdf;
+    html2canvas(document.body).then(canvas => {
+      const pdf = new jsPDF('p', 'mm', 'a4');
+      const imgData = canvas.toDataURL('image/png');
+      const imgWidth = 210;
+      const pageHeight = 297;  
+      const imgHeight = canvas.height * imgWidth / canvas.width;
+      let heightLeft = imgHeight;
+      let position = 0;
+
+      pdf.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
+      heightLeft -= pageHeight;
+
+      while (heightLeft >= 0) {
+          position = heightLeft - imgHeight;
+          pdf.addPage();
+          pdf.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
+          heightLeft -= pageHeight;
+      }
+
+      pdf.save('cv.pdf');
+  }).catch(error => {
+      console.error('Error: ', error);
+  });
+});
+
+
 });
 
 // Smooth scroll for links with hashes
@@ -41,3 +70,4 @@ $('a.smooth-scroll')
     }
   }
 });
+
