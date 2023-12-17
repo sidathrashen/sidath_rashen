@@ -5166,6 +5166,18 @@ Created using IcoMoon - icomoon.io
   opacity: 0.0;
   z-index: 99; }
 
+/* Hide additional projects initially */
+.additional-projects {
+  display: none;
+}
+
+.desc {
+    height: 200px;
+    background-color:  rgba(55, 140, 63, 0.4); /* Green with transparency */
+    border-radius: 10px; /* Rounded borders */
+    overflow-y: auto; /* Enable vertical scrolling if content overflows */
+    padding: 20px;
+}
 .cc-profile-image img {
   position: relative;
   border-radius: 50%;

@@ -7,6 +7,25 @@ $(document).ready(function() {
     // uncomment below for on-scroll animations to played only once
     // once: true  
   }); // initialize animate on scroll library
+  
+  const toggleProjectsBtn = document.getElementById('toggleProjectsBtn');
+  const additionalProjects = document.querySelector('.additional-projects');
+
+  toggleProjectsBtn.addEventListener('click', function() {
+      // Check if additional projects are visible
+      if (additionalProjects.style.display === 'none') {
+          // Show additional projects
+          additionalProjects.style.display = 'block';
+          // Change button text to 'Hide Additional Projects'
+          toggleProjectsBtn.textContent = 'Hide Additional Projects';
+      } else {
+          // Hide additional projects
+          additionalProjects.style.display = 'none';
+          // Change button text back to 'View More'
+          toggleProjectsBtn.textContent = 'View More';
+      }
+  });
+
 
   document.getElementById('downloadCvButton').addEventListener('click', function() {
              // Create a new anchor element
